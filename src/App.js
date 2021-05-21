@@ -6,7 +6,8 @@ const CounterContext = createContext([0, () => {}]);
 export default function App() {
   const [count, setCount] = useState(0);
   return (
-    <CounterContext.Provider value={[count, setCount]}>
+    <CounterContext.Provider value={[count, setCount]}>  
+    {/* <CounterContext.Provider value={{count:5, setCount}}> */}
       <div className="App">
         <Comp1/>
       </div>
