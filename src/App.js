@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import React,{ createContext, useContext, useState } from "react";
 import "./styles.css";
 
 const CounterContext = createContext([0, () => {}]);
@@ -39,14 +39,33 @@ const Comp3 = () => {
     </>
   )
 }
-const Comp4 = () => {
-const [count, setCount] = useContext(CounterContext);
-  return(
-    <>
-      <div>Comp4</div>
-      <div>{count}</div>
-      <button onClick={() => setCount(count+1)}>increseCount</button>
-      <button onClick={() => setCount(count-1)}>decreaseCount</button>
-    </>
-  )
+// const Comp4 = () => {
+// const [count, setCount] = useContext(CounterContext);
+//   return(
+//     <>
+//       <div>Comp4</div>
+//       <div>{count}</div>
+//       <button onClick={() => setCount(count+1)}>increseCount</button>
+//       <button onClick={() => setCount(count-1)}>decreaseCount</button>
+//     </>
+//   )
+// }
+
+class Comp4 extends React.Component{
+  render(){
+    return(
+      <CounterContext.Consumer>
+        {([count, setCount]) => {
+          return(
+            <>
+              <div>Comp4</div>
+              <div>{count}</div>
+              <button onClick={() => setCount(count+1)}>increseCount</button>
+              <button onClick={() => setCount(count-1)}>decreaseCount</button>
+             </>
+          )
+        }}
+      </CounterContext.Consumer>
+    )
+  }
 }
